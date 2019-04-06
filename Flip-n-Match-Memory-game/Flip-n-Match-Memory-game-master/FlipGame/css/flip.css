@@ -1,0 +1,203 @@
+/*
+page sizing
+*/
+*
+{
+    box-sizing: border-box;
+}
+
+/*
+html styling
+view height
+*/
+html
+{
+    min-height: 100vh;
+}
+
+/*
+body styling
+background gradient
+*/
+
+body
+{
+    background-image:linear-gradient(-125deg,#000000,#0c0f0c,#0a0e0d,#110e0e,#130e14,#000000);
+    background-size: 400%;
+    animation: bganimation 5s infinite;
+}
+
+/*
+text styling
+*/
+
+.gameTitle
+{
+    font-family: Impact, Helvetica, sans-serif;
+    color: #00ff80;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.gameInfoContainer
+{
+    grid-column: 1 /-1;
+    display: flex;
+    justify-content: space-between;
+}
+
+#timeRemaining
+{
+    display: none;
+}
+
+.gameInfo
+{
+    font-family: Impact, Helvetica, sans-serif;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+/*
+card container which has the grid within
+*/
+.gameContainer
+{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 1em;
+    margin: 2em;
+    justify-content: center;
+    border-radius: 2px;
+    opacity: 0.85;
+    perspective: 500px;
+}
+
+/*
+cards
+*/
+
+.card
+{
+    position: relative;
+    height: 130px;
+    width: 130px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 2%;
+    background-image: linear-gradient(-125deg,#14ffe9, #ffeb3b, #ff00e0);
+    animation: rainbow 5s linear infinite;
+    background-size: 400%;
+}
+
+.card.visible .cardBack
+{
+    transform: rotateY(-180deg);
+}
+
+.card.visible .cardFront
+{
+    transform: rotateY(0);
+}
+
+.card.matched .cardValue
+{
+    animation:  dance 1s linear infinite 500ms;
+}
+
+.cardFront
+{
+    transform: rotateY(180deg);
+    padding:15%;
+}
+
+.cardFace
+{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    transition: transform 500ms ease-in-out;
+}
+
+.backFaceImg
+{
+    height: 130px;
+    width: 130px;
+    border-radius: 1%;
+    border: 5px #beffef solid;
+}
+
+/*
+Keyframes
+*/
+
+/*
+card background rainbow animation
+*/
+
+@keyframes rainbow
+{
+    0%
+    {
+        background-position: 0% 50%;
+    }
+
+    50%
+    {
+        background-position: 100% 50%;
+    }
+
+    100%
+    {
+        background-position: 0% 50%;
+    }
+}
+
+/*
+background animation
+*/
+@keyframes bganimation
+{
+    0%
+    {
+        background-position: 0% 50%;
+    }
+
+    50%
+    {
+        background-position: 100% 50%;
+    }
+
+    100%
+    {
+        background-position: 0% 50%;
+    }
+}
+
+/*
+matched card dance animation
+*/
+
+@keyframes dance
+{
+    0%, 100%
+    {
+        transform: rotate(0);
+    }
+
+    25%
+    {
+        transform: rotate(30deg);
+    }
+
+    75%
+    {
+        transform: rotate(-30deg);
+    }
+}
